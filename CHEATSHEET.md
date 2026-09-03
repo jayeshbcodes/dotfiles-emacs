@@ -30,6 +30,7 @@ files.
 | `C-x 3` | Split window vertically (side by side) |
 | `C-x o` | Move point to the other window |
 | `C-x 4 f` | Open a file in a new window (leaves current window as-is) |
+| `M-g g` or `M-g M-g` | Go to line (prompts for a line number) |
 | `C-g` | Cancel current command (universal "get me out") |
 | `M-x` | Run any command by name |
 | `C-x C-c` | Quit Emacs |
@@ -183,6 +184,7 @@ on `~/.emacs.d/CHEATSHEET.md`.
 ## Notes
 
 - Config lives in `~/.emacs.d/init.el` (and `~/.emacs.d/early-init.el` for startup UI tweaks).
+- Line numbers are shown by default in every file buffer (`global-display-line-numbers-mode`).
 - External packages: `magit`, `rust-mode`, `which-key`, `company`, `markdown-mode`. Everything else (`eglot`, `flymake`, `use-package`, `modus-themes`) is built into Emacs 31.
 - To add a package later: add a `(use-package NAME ...)` block to `init.el`, save, then `M-x eval-buffer` or restart Emacs.
 - Every keybinding in this document was verified against this exact config's live keymaps, not assumed from memory.

@@ -22,6 +22,7 @@
 
 (show-paren-mode 1)
 (electric-pair-mode 1)
+(global-display-line-numbers-mode 1)
 (column-number-mode 1)
 (setq-default indent-tabs-mode nil)
 (recentf-mode 1)
