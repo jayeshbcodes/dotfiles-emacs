@@ -29,6 +29,13 @@
 (savehist-mode 1)
 (save-place-mode 1)
 
+;; Mouse in terminal Emacs (-nw): click to switch window/move point, drag a
+;; mode line or divider to resize, wheel to scroll. Without this the
+;; terminal keeps all mouse events to itself. To select text with the
+;; terminal's own selection instead, hold Option (iTerm2) or Fn (Terminal.app).
+(xterm-mouse-mode 1)
+(mouse-wheel-mode 1)
+
 ;;; Theme ----------------------------------------------------------------------
 ;; modus-themes is built into Emacs 28+, no external package needed.
 (use-package modus-themes
@@ -77,8 +84,22 @@
   (company-idle-delay 0.2)
   (company-minimum-prefix-length 1))
 
+;; rust-viz: inline memory/ownership annotations (allocs, moves, borrows,
+;; drops) on each line. C-c C-v r annotate (also re-runs on save),
+;; C-c C-v s step through (n/p/g/G/q), C-c C-v c clear.
+;; Binary: `cargo install --path ~/rust-viz` — re-run after pulling updates.
+(use-package rust-viz
+  :ensure nil
+  :load-path "~/rust-viz/emacs"
+  :hook (rust-mode . rust-viz-mode)
+  :custom
+  ;; Absolute path: a GUI Emacs launched from the Dock doesn't inherit the
+  ;; shell's PATH, so ~/.cargo/bin may not be on `exec-path'.
+  (rust-viz-executable (expand-file-name "~/.cargo/bin/rust-viz")))
+
 ;;; Markdown -------------------------------------------------------------------
 (use-package markdown-mode
   :mode ("\\.md\\'" . gfm-mode) ; gfm-mode adds GitHub table/fence support
   :bind (:map markdown-mode-map
               ("<f6>" . markdown-live-preview-mode))) ; gfm-mode inherits this map
+
