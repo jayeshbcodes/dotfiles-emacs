@@ -181,6 +181,35 @@ on `~/.emacs.d/CHEATSHEET.md`.
 | `C-c C-c p` | Export and open the rendered version in your external browser |
 | `C-c C-c e` | Export to an HTML file only (doesn't open anything) |
 
+## TidyBoard — ideas + tasks (`~/tideaBoard`)
+
+`board.org` has three sections: **Inbox**, **In Progress**, **Finished**. Each
+item is a heading tagged `:idea:` or `:task:` and gets its own directory
+`tasks/<slug>/` or `ideas/<slug>/` (a fresh git repo with a `NOTES.md`). All commands live under
+`C-c t` — press it and pause for `which-key`.
+
+| Keys | Action |
+|---|---|
+| `C-c t p` | Toggle the board in a right-side pane (sections + item titles) |
+| `C-c t b` | Open the board full-size |
+| `C-c t n` | New item → Inbox (prompts title + idea/task, creates its dir) |
+| `C-u C-c t n` | Same, but the dir is a **git worktree** of an existing repo (branch `tidy/<slug>`) |
+| `C-c t s` | Start item at point → In Progress (stamps `STARTED`) |
+| `C-c t f` | Finish item at point → Finished (stamps `FINISHED`) |
+| `C-c t m` | Move item at point to any section |
+| `C-c t r` | Remove item at point from the board (its directory is kept) |
+| `C-x C-q` | Board buffer is read-only (so auto-revert works); toggle to hand-edit |
+| `C-c t d` | Open the item's directory in Dired |
+| `C-c t l` | Launch: new herdr tab in the item's dir running Claude (agent `task-<slug>`/`idea-<slug>`), moves it to In Progress |
+| `TAB` | (in the board) Expand/collapse an item to see its properties |
+| `C-c C-x C-c` | (in the board) Column view — each section as a table; `q` to exit |
+
+In **herdr**, `ctrl+b t` toggles terminal Emacs on the board in a split to the right
+(plugin at `~/tideaBoard/herdr-plugin/`, a bun script). Quit it with `C-x C-c` or press `ctrl+b t` again.
+
+Claude reads `~/tideaBoard/CLAUDE.md`, so sessions started in an item dir know
+how to look up past items' `NOTES.md` to reuse or combine them.
+
 ## Notes
 
 - Config lives in `~/.emacs.d/init.el` (and `~/.emacs.d/early-init.el` for startup UI tweaks).

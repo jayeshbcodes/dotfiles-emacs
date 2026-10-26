@@ -103,3 +103,11 @@
   :bind (:map markdown-mode-map
               ("<f6>" . markdown-live-preview-mode))) ; gfm-mode inherits this map
 
+;;; TidyBoard -------------------------------------------------------------------
+;; Idea + task board: ~/tideaBoard/board.org (Inbox / In Progress / Finished),
+;; one directory (git repo or worktree) per item under ~/tideaBoard/{tasks,ideas}/.
+(use-package tidyboard
+  :ensure nil
+  :load-path "~/tideaBoard"
+  :commands (tidy-board tidy-side tidy-new)
+  :bind-keymap ("C-c t" . tidy-map))
