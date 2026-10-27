@@ -36,6 +36,12 @@
 (xterm-mouse-mode 1)
 (mouse-wheel-mode 1)
 
+;; Edit server: lets other programs open files in this Emacs via
+;; `emacsclient -n FILE` (e.g. `rustlings --edit-cmd "emacsclient -n"`).
+;; Only the first Emacs started becomes the server; later ones skip it.
+(require 'server)
+(unless (server-running-p) (server-start))
+
 ;;; Theme ----------------------------------------------------------------------
 ;; modus-themes is built into Emacs 28+, no external package needed.
 (use-package modus-themes
