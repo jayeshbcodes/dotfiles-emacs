@@ -38,9 +38,10 @@
 
 ;; Edit server: lets other programs open files in this Emacs via
 ;; `emacsclient -n FILE` (e.g. `rustlings --edit-cmd "emacsclient -n"`).
-;; Only the first Emacs started becomes the server; later ones skip it.
+;; Only a terminal Emacs (-nw) becomes the server — so files open there, not
+;; in the GUI — and only the first one started; later ones skip it.
 (require 'server)
-(unless (server-running-p) (server-start))
+(unless (or (display-graphic-p) (server-running-p)) (server-start))
 
 ;;; Theme ----------------------------------------------------------------------
 ;; modus-themes is built into Emacs 28+, no external package needed.
