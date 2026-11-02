@@ -36,6 +36,16 @@
 (xterm-mouse-mode 1)
 (mouse-wheel-mode 1)
 
+;; Dragging the mouse over text copies it, like selecting in a terminal.
+(setq mouse-drag-copy-region t)
+
+;; Terminal Emacs can't reach the macOS clipboard on its own: xclip-mode
+;; routes copy (M-w, C-w, mouse selection) and paste (C-y) through
+;; pbcopy/pbpaste, so text moves between Emacs and other apps.
+(use-package xclip
+  :unless (display-graphic-p)
+  :config (xclip-mode 1))
+
 ;; Edit server: lets other programs open files in this Emacs via
 ;; `emacsclient -n FILE` (e.g. `rustlings --edit-cmd "emacsclient -n"`).
 ;; Only a terminal Emacs (-nw) becomes the server — so files open there, not
