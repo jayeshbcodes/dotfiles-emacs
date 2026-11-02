@@ -59,10 +59,15 @@ Selecting, cutting, copying:
 | `M-w` | Copy selected region |
 | `C-y` | Paste (yank) last cut/copied text |
 | `M-y` | After `C-y`, cycle back through earlier kills (clipboard history) |
+| Mouse drag | Select **and copy** the dragged text (no `M-w` needed) |
 | `C-k` | Kill from point to end of line |
 | `M-d` | Kill (delete) the next word |
 | `C-M-\` | Indent the whole selected region (`Tab` alone only indents the current line) |
 | `C-/` or `C-x u` | Undo |
+
+Copies and cuts go to the macOS clipboard too (`xclip-mode` in terminal
+Emacs), so `⌘V` pastes them in other apps, and text copied elsewhere pastes
+into Emacs with `C-y`.
 
 Search & replace:
 
@@ -76,7 +81,10 @@ Misc:
 | Keys | Action |
 |---|---|
 | `C-x C-+` / `C-x C--` | Increase / decrease font size |
-| `F5` | Toggle dark/light theme (`modus-vivendi` / `modus-operandi`) |
+| `Fn`+`F5` | Toggle dark/light theme (`modus-vivendi` / `modus-operandi`) |
+
+The top-row keys are media keys (volume, brightness) by default, so Emacs's
+F-key bindings need `Fn`.
 
 ## Discoverability — `which-key`
 
@@ -177,7 +185,7 @@ on `~/.emacs.d/CHEATSHEET.md`.
 
 | Keys | Action |
 |---|---|
-| `F6` | Toggle live preview **inside Emacs** (via `eww`) — re-renders each time you save (`C-x C-s`), not on every keystroke |
+| `Fn`+`F6` | Toggle live preview **inside Emacs** (via `eww`) — re-renders each time you save (`C-x C-s`), not on every keystroke |
 | `C-c C-c p` | Export and open the rendered version in your external browser |
 | `C-c C-c e` | Export to an HTML file only (doesn't open anything) |
 
