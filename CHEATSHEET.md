@@ -136,7 +136,7 @@ and shows allocations, moves, borrows and drops; it only runs when you ask
 
 | Keys | Action |
 |---|---|
-| `C-c C-v r` | Run and annotate every line (re-run after edits) |
+| `C-c C-v r` | Run and annotate every line. They vanish as soon as you edit (they'd be stale); run again to bring them back |
 | `C-c C-v s` | Step through the program (`viz-step` in the mode line) |
 | `C-c C-v c` | Clear the annotations |
 
