@@ -128,6 +128,33 @@ Cargo, run from a shell or `M-x compile`:
 - `M-x compile` then `cargo test`
 - Click/`Enter` on an error line in the `*compilation*` buffer jumps to that spot
 
+## rust-viz — see memory as your program runs (`~/rust-viz`)
+
+`rust-viz-mode` turns on automatically in `.rs` files. It runs the program
+and shows allocations, moves, borrows and drops; it only runs when you ask
+(not on save).
+
+| Keys | Action |
+|---|---|
+| `C-c C-v r` | Run and annotate every line (re-run after edits) |
+| `C-c C-v s` | Step through the program (`viz-step` in the mode line) |
+| `C-c C-v c` | Clear the annotations |
+
+In step mode:
+
+| Keys | Action |
+|---|---|
+| `n` / `SPC` | Next step |
+| `p` / `DEL` | Previous step |
+| `g` / `G` | First / last step (`G` = run to the end) |
+| `q` | Quit step mode (the buffer becomes editable again) |
+
+The window at the bottom shows the stack, heap and output for the line
+under the cursor; drag its mode line to resize it. rust-viz doesn't
+type-check integer widths, so still run `cargo build`. In a terminal,
+`rust-viz file.rs` opens the same stepper (`G`/`End` for the last step).
+Rules learned so far: `~/rust-viz/GOLDEN_RULES.md`.
+
 ## Reviewing Claude's diffs — `magit` (the main pairing workflow)
 
 Open with `C-x g` from any file in a repo. Inside the Magit status buffer:
