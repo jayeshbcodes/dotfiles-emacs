@@ -64,6 +64,8 @@ Selecting, cutting, copying:
 | `M-d` | Kill (delete) the next word |
 | `C-M-\` | Indent the whole selected region (`Tab` alone only indents the current line) |
 | `C-/` or `C-x u` | Undo |
+| `M-;` | With a selection: comment / uncomment those lines. Without one: add a `//` comment at the end of the line |
+| `C-x C-;` | Comment / uncomment the current line (`C-u 3 C-x C-;` for the next 3) |
 
 Copies and cuts go to the macOS clipboard too (`xclip-mode` in terminal
 Emacs), so `⌘V` pastes them in other apps, and text copied elsewhere pastes
