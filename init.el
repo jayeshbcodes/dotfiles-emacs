@@ -102,7 +102,7 @@
   (company-minimum-prefix-length 1))
 
 ;; rust-viz: inline memory/ownership annotations (allocs, moves, borrows,
-;; drops) on each line. C-c C-v r annotate (also re-runs on save),
+;; drops) on each line. C-c C-v r annotate (re-run it after edits),
 ;; C-c C-v s step through (n/p/g/G/q), C-c C-v c clear.
 ;; Binary: `cargo install --path ~/rust-viz` — re-run after pulling updates.
 (use-package rust-viz
@@ -112,7 +112,9 @@
   :custom
   ;; Absolute path: a GUI Emacs launched from the Dock doesn't inherit the
   ;; shell's PATH, so ~/.cargo/bin may not be on `exec-path'.
-  (rust-viz-executable (expand-file-name "~/.cargo/bin/rust-viz")))
+  (rust-viz-executable (expand-file-name "~/.cargo/bin/rust-viz"))
+  ;; Run only on C-c C-v r, not on every save.
+  (rust-viz-annotate-on-save nil))
 
 ;;; Markdown -------------------------------------------------------------------
 (use-package markdown-mode
